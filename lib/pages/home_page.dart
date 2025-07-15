@@ -9,12 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Catalog App"),
-        centerTitle: true,
-        backgroundColor: Colors.deepPurple,
-        foregroundColor: Colors.white,
-      ),
+      appBar: AppBar(centerTitle: true, title: Text("Catalog App")),
       body: Center(child: Text("Welcome to $days Days of Flutter by $name")),
       drawer: MyDrawer(),
     );
