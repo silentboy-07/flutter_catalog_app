@@ -44,12 +44,44 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(centerTitle: true, title: Text("Catalog App")),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
+
         // ignore: unnecessary_null_comparison
         child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-            ? ListView.builder(
+            ? GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                ),
+                itemBuilder: (context, Index) {
+                  final item = CatalogModel.items[Index];
+                  return Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(10),
+                    ),
+                    child: GridTile(
+                      header: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(color: Colors.deepPurple),
+                        child: Text(
+                          item.name,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      footer: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(color: Colors.black),
+                        child: Text(
+                          item.price.toString(),
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      child: Image.network(item.image),
+                    ),
+                  );
+                },
                 itemCount: CatalogModel.items.length,
-                itemBuilder: (context, index) =>
-                    ItemWidget(item: CatalogModel.items[index]),
               )
             : Center(child: CircularProgressIndicator()),
       ),
