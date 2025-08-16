@@ -67,6 +67,11 @@ class HomeDetailPage extends StatelessWidget {
                           .xl
                           .make(),
                       10.heightBox,
+                      "At gubergren amet at amet rebum, no erat elitr stet sanctus stet stet duo clita. Duo erat et lorem tempor amet. Ut lorem dolor labore magna gubergren, sed et sea tempor aliquyam sed. Gubergren eirmod amet kasd sanctus dolor magna aliquyam aliquyam. Et lorem et eirmod dolor amet, consetetur etc."
+                          .text
+                          .textStyle(context.captionStyle)
+                          .make()
+                          .p16(),
                     ],
                   ).py64(),
                 ),

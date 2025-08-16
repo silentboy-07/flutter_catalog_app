@@ -25,7 +25,7 @@ class CatalogList extends StatelessWidget {
           child: CatalogItem(catalog: catalog),
         );
       },
-    );
+    ).py24();
   }
 }
 
