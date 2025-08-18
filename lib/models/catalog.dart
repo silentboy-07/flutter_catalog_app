@@ -3,6 +3,8 @@ import 'dart:convert';
 
 class CatalogModel {
   static List<Item> items = [];
+
+  static getByPosition(int index) {}
 }
 
 class Item {

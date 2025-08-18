@@ -36,6 +36,8 @@ class CatalogItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return VxBox(
       child: Row(
         children: [
@@ -48,28 +50,38 @@ class CatalogItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                catalog.name.text.lg.color(MyTheme.darkBluishColor).bold.make(),
-                catalog.desc.text.textStyle(context.captionStyle).make(),
+                catalog.name.text.xl
+                    .color(isDarkMode ? MyTheme.white : MyTheme.darkBluishColor)
+                    .bold
+                    .make(),
+                catalog.desc.text
+                    .textStyle(context.theme.textTheme.labelSmall)
+                    .color(
+                      isDarkMode
+                          // ignore: deprecated_member_use
+                          ? MyTheme.white.withOpacity(0.8)
+                          : Colors.black54,
+                    )
+                    .make(),
                 10.heightBox,
                 OverflowBar(
                   alignment: MainAxisAlignment.spaceBetween,
                   overflowAlignment: OverflowBarAlignment.start,
                   children: [
-                    "\$${catalog.price}".text.bold.xl.black.make(),
+                    "\$${catalog.price}".text.bold.xl
+                        .color(isDarkMode ? MyTheme.white : Colors.black87)
+                        .make(),
                     ElevatedButton(
                       onPressed: () {},
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all(
-                          MyTheme.darkBluishColor,
-                        ),
-                        shape: WidgetStateProperty.all(const StadiumBorder()),
-                        minimumSize: WidgetStateProperty.all(
-                          const Size(50, 50),
-                        ), // width, height
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: isDarkMode
+                            ? MyTheme.lightBluishColor
+                            : MyTheme.darkBluishColor,
+                        foregroundColor: MyTheme.white,
+                        shape: const StadiumBorder(),
+                        minimumSize: const Size(50, 50),
                       ),
-                      child: "Buy".text
-                          .color(Colors.white)
-                          .make(), // xl makes text bigger
+                      child: "Buy".text.make(),
                     ),
                   ],
                 ).pOnly(right: 8.0),
@@ -78,6 +90,6 @@ class CatalogItem extends StatelessWidget {
           ),
         ],
       ),
-    ).white.rounded.square(180).make().py16();
+    ).color(context.cardColor).rounded.square(180).make().py16();
   }
 }
