@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 
@@ -8,8 +10,7 @@ import 'package:velocity_x/velocity_x.dart';
 class HomeDetailPage extends StatelessWidget {
   final Item catalog;
 
-  const HomeDetailPage({super.key, required this.catalog})
-    : assert(catalog != null);
+  const HomeDetailPage({super.key, required this.catalog});
 
   @override
   Widget build(BuildContext context) {

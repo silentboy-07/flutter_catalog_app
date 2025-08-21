@@ -38,10 +38,14 @@ class _CartTotal extends StatelessWidget {
           VxBuilder<MyStore>(
             mutations: {RemoveMutation},
             builder: (context, store, status) {
-              final CartModel _cart = (store as MyStore).cart;
-
-              return "\$${_cart.totalPrice}".text.xl5
-                  .color(context.theme.primaryColor)
+              final CartModel cart = (store).cart;
+              return "\$${cart.totalPrice}".text.xl5
+                  .textStyle(
+                    context.theme.textTheme.bodyLarge,
+                  ) // Use bodyLarge text style
+                  .color(
+                    context.theme.textTheme.bodyLarge!.color,
+                  ) // Use bodyLarge color for light/dark mode
                   .make();
             },
           ),
@@ -66,18 +70,18 @@ class _CartList extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: no_leading_underscores_for_local_identifiers
     VxState.watch(context, on: [RemoveMutation]);
-    final CartModel _cart = (VxState.store as MyStore).cart;
-    return _cart.items.isEmpty
+    final CartModel cart = (VxState.store as MyStore).cart;
+    return cart.items.isEmpty
         ? "Nothing to Show".text.xl3.makeCentered()
         : ListView.builder(
-            itemCount: _cart.items.length,
+            itemCount: cart.items.length,
             itemBuilder: (context, index) => ListTile(
               leading: Icon(Icons.done),
               trailing: IconButton(
                 icon: Icon(Icons.remove_circle_outline),
-                onPressed: () => RemoveMutation(_cart.items[index]!),
+                onPressed: () => RemoveMutation(cart.items[index]!),
               ),
-              title: _cart.items[index]?.name.text.make(),
+              title: cart.items[index]?.name.text.make(),
             ),
           );
   }
