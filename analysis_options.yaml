@@ -10,7 +10,10 @@
 analyzer:
   errors:
     non_constant_identifier_names: ignore
+    unnecessary_nullable_for_final_variable_declarations: ignore
     unrelated_type_equality_checks: ignore
+    unused_local_variable: ignore
+    use_super_parameters: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:

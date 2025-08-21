@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/catalog.dart';
+
+import 'package:flutter_catalog/widgets/home_widgets/add_to_cart.dart';
 import 'package:flutter_catalog/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -7,7 +9,6 @@ class HomeDetailPage extends StatelessWidget {
   final Item catalog;
 
   const HomeDetailPage({super.key, required this.catalog})
-    // ignore: unnecessary_null_comparison
     : assert(catalog != null);
 
   @override
@@ -31,18 +32,7 @@ class HomeDetailPage extends StatelessWidget {
             "\$${catalog.price}".text.bold.xl3
                 .color(isDarkMode ? MyTheme.white : const Color(0xFF9E0C01))
                 .make(),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: isDarkMode
-                    ? MyTheme.lightBluishColor
-                    : MyTheme.darkBluishColor,
-                foregroundColor: MyTheme.white,
-                shape: const StadiumBorder(),
-                minimumSize: const Size(50, 50),
-              ),
-              child: "Buy".text.make(),
-            ).wh(100, 50),
+            AddToCart(catalog: catalog, isDarkMode: isDarkMode).wh(100, 50),
           ],
         ).p32(),
       ),
@@ -77,8 +67,7 @@ class HomeDetailPage extends StatelessWidget {
                           .xl
                           .color(
                             isDarkMode
-                                // ignore: deprecated_member_use
-                                ? MyTheme.white.withOpacity(0.8)
+                                ? MyTheme.white.withOpacity(0.7)
                                 : Colors.black54,
                           )
                           .make(),
@@ -88,8 +77,7 @@ class HomeDetailPage extends StatelessWidget {
                           .textStyle(context.theme.textTheme.labelSmall)
                           .color(
                             isDarkMode
-                                // ignore: deprecated_member_use
-                                ? MyTheme.white.withOpacity(0.8)
+                                ? MyTheme.white.withOpacity(0.7)
                                 : Colors.black54,
                           )
                           .make()
