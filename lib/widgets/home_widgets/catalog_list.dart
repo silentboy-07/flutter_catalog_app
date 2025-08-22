@@ -37,7 +37,7 @@ class CatalogList extends StatelessWidget {
                 child: CatalogItem(catalog: catalog),
               );
             },
-          ).py24()
+          ).py20()
         : ListView.builder(
             shrinkWrap: true,
             physics: const BouncingScrollPhysics(), //  allow smooth scroll
@@ -109,9 +109,14 @@ class CatalogItem extends StatelessWidget {
     ];
 
     return VxBox(
-      child: context.isMobile
-          ? Row(children: children2)
-          : Column(children: children2),
-    ).color(context.cardColor).rounded.py16.make().py32();
+          child: context.isMobile
+              ? Row(children: children2)
+              : Column(children: children2),
+        )
+        .color(context.cardColor)
+        .rounded
+        .py16
+        .make()
+        .py(context.isMobile ? 16 : 32);
   }
 }
