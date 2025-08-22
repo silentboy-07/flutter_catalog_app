@@ -9,6 +9,7 @@
 # packages, and plugins designed to encourage good coding practices.
 analyzer:
   errors:
+    deprecated_member_use: ignore
     non_constant_identifier_names: ignore
     unnecessary_nullable_for_final_variable_declarations: ignore
     unrelated_type_equality_checks: ignore
