@@ -1,10 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/widgets/home_widgets/add_to_cart.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import 'package:flutter_catalog/models/catalog.dart';
-import 'package:flutter_catalog/pages/home_detail_page.dart';
+import 'package:flutter_catalog/utils/routes.dart';
 import 'package:flutter_catalog/widgets/home_widgets/catalog_image.dart';
 import 'package:flutter_catalog/widgets/themes.dart';
 
@@ -14,13 +12,12 @@ class CatalogList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return !context.isMobile
-        //  Web / Tablet layout (Grid) with scrolling
         ? GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 20.0,
               mainAxisSpacing: 20.0,
-              childAspectRatio: 1.2, //  keeps cards proportional
+              childAspectRatio: 1.2,
             ),
             shrinkWrap: true,
             physics: const BouncingScrollPhysics(),
@@ -28,11 +25,9 @@ class CatalogList extends StatelessWidget {
             itemBuilder: (context, index) {
               final catalog = CatalogModel.items[index];
               return InkWell(
-                onTap: () => Navigator.push(
+                onTap: () => Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => HomeDetailPage(catalog: catalog),
-                  ),
+                  "${MyRoutes.homeDetailRoute.split(':')[0]}${catalog.id}",
                 ),
                 child: CatalogItem(catalog: catalog),
               );
@@ -40,16 +35,14 @@ class CatalogList extends StatelessWidget {
           ).py20()
         : ListView.builder(
             shrinkWrap: true,
-            physics: const BouncingScrollPhysics(), //  allow smooth scroll
+            physics: const BouncingScrollPhysics(),
             itemCount: CatalogModel.items.length,
             itemBuilder: (context, index) {
               final catalog = CatalogModel.items[index];
               return InkWell(
-                onTap: () => Navigator.push(
+                onTap: () => Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => HomeDetailPage(catalog: catalog),
-                  ),
+                  "${MyRoutes.homeDetailRoute.split(':')[0]}${catalog.id}",
                 ),
                 child: CatalogItem(catalog: catalog),
               );
@@ -77,7 +70,6 @@ class CatalogItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // ✅ Safe text with wrapping
             catalog.name.text.xl
                 .maxLines(1)
                 .overflow(TextOverflow.ellipsis)

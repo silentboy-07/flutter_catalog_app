@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/core/store.dart';
+import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/pages/cart_page.dart';
+import 'package:flutter_catalog/pages/home_detail_page.dart';
 import 'package:flutter_catalog/pages/home_page.dart';
 import 'package:flutter_catalog/pages/login_page.dart';
 import 'package:flutter_catalog/theme_notifier.dart';
@@ -29,15 +31,46 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: themeNotifier.themeMode, // ← controlled by the toggle
+      themeMode: themeNotifier.themeMode,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
-      initialRoute: MyRoutes.homeRoute,
+      initialRoute: "/",
       routes: {
         "/": (context) => LoginPage(),
         MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.loginRoute: (context) => LoginPage(),
         MyRoutes.cartRoute: (context) => CartPage(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name?.startsWith(MyRoutes.homeDetailRoute.split(':')[0]) ??
+            false) {
+          final id = settings.name!.split('/').last;
+          try {
+            final item = CatalogModel.getById(int.parse(id));
+            if (item != null && item.id != -1) {
+              // Check for valid item
+              return MaterialPageRoute(
+                builder: (context) => HomeDetailPage(catalog: item),
+                settings: settings,
+              );
+            } else {
+              return MaterialPageRoute(
+                builder: (context) => Scaffold(
+                  appBar: AppBar(),
+                  body: Center(child: Text("Item not found")),
+                ),
+              );
+            }
+          } catch (e) {
+            return MaterialPageRoute(
+              builder: (context) => Scaffold(
+                appBar: AppBar(),
+                body: Center(child: Text("Invalid item ID")),
+              ),
+            );
+          }
+        }
+        return null;
       },
     );
   }

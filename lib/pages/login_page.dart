@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 20.0),
                     AnimatedContainer(
                       duration: const Duration(seconds: 1),
-                      width: changeButton ? 45 : 130,
+                      width: changeButton ? 50 : 130,
                       height: 45,
                       child: ElevatedButton(
                         onPressed: () => moveToHome(context),
