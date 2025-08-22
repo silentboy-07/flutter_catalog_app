@@ -20,23 +20,33 @@ class CatalogHeader extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            "Catalog App".text.xl5.bold
-                .color(isDarkMode ? MyTheme.white : MyTheme.darkBluishColor)
-                .make(),
-
-            // Theme Toggle Icon
+            // Wrap text in Flexible to prevent overflow
+            Flexible(
+              child: "Catalog App"
+                  .text
+                  .xl4
+                  .bold // Reduced from xl5 to xl4
+                  .color(isDarkMode ? MyTheme.white : MyTheme.darkBluishColor)
+                  .make(),
+            ),
+            // Theme Toggle Icon with reduced size
             IconButton(
               icon: Icon(
                 isDarkMode ? Icons.wb_sunny : Icons.nights_stay,
                 color: isDarkMode ? Colors.yellow : Colors.blueGrey,
+                size: 20, // Reduce icon size (default is 24)
               ),
+              padding: EdgeInsets.zero, // Remove default padding
+              constraints: const BoxConstraints(
+                minWidth: 32,
+                minHeight: 32,
+              ), // Reduce touch target size
               onPressed: () {
                 themeNotifier.toggleTheme();
               },
             ),
           ],
         ),
-
         "Trending products".text.xl2
             .color(isDarkMode ? MyTheme.white.withOpacity(0.8) : Colors.black87)
             .make(),

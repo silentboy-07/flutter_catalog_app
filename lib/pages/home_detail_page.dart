@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/catalog.dart';
-
 import 'package:flutter_catalog/widgets/home_widgets/add_to_cart.dart';
 import 'package:flutter_catalog/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -22,10 +21,9 @@ class HomeDetailPage extends StatelessWidget {
             ? MyTheme.darkCreamColor
             : MyTheme.creamColor,
       ),
-      backgroundColor:
-          context.canvasColor, // creamColor (light), darkCreamColor (dark)
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: context.cardColor, // white (light), black (dark)
+        color: context.cardColor,
         child: OverflowBar(
           alignment: MainAxisAlignment.spaceBetween,
           overflowAlignment: OverflowBarAlignment.start,
@@ -35,56 +33,59 @@ class HomeDetailPage extends StatelessWidget {
                 .make(),
             AddToCart(catalog: catalog, isDarkMode: isDarkMode).wh(100, 50),
           ],
-        ).p32(),
+        ).p16(), // Reduced from p32 to p16
       ),
       body: SafeArea(
-        bottom: false,
+        bottom: true, // Changed to true to respect bottom safe area
         child: Column(
           children: [
             Hero(
               tag: Key(catalog.id.toString()),
               child: Image.network(catalog.image),
-            ).h32(context),
+            ).h24(context), // Reduced from h32 to h24
             Expanded(
               child: VxArc(
                 height: 30.0,
                 arcType: VxArcType.convey,
                 edge: VxEdge.top,
                 child: Container(
-                  color: context.cardColor, // white (light), black (dark)
+                  color: context.cardColor,
                   width: context.screenWidth,
-                  child: Column(
-                    children: [
-                      catalog.name.text.xl4
-                          .color(
-                            isDarkMode
-                                ? MyTheme.white
-                                : MyTheme.darkBluishColor,
-                          )
-                          .bold
-                          .make(),
-                      catalog.desc.text
-                          .textStyle(context.theme.textTheme.labelSmall)
-                          .xl
-                          .color(
-                            isDarkMode
-                                ? MyTheme.white.withOpacity(0.7)
-                                : Colors.black54,
-                          )
-                          .make(),
-                      10.heightBox,
-                      "At gubergren amet at amet rebum, no erat elitr stet sanctus stet stet duo clita. Duo erat et lorem tempor amet. Ut lorem dolor labore magna gubergren, sed et sea tempor aliquyam sed. Gubergren eirmod amet kasd sanctus dolor magna aliquyam aliquyam. Et lorem et eirmod dolor amet, consetetur etc."
-                          .text
-                          .textStyle(context.theme.textTheme.labelSmall)
-                          .color(
-                            isDarkMode
-                                ? MyTheme.white.withOpacity(0.7)
-                                : Colors.black54,
-                          )
-                          .make()
-                          .p16(),
-                    ],
-                  ).py64(),
+                  child: SingleChildScrollView(
+                    // Added scrollable container
+                    child: Column(
+                      children: [
+                        catalog.name.text.xl4
+                            .color(
+                              isDarkMode
+                                  ? MyTheme.white
+                                  : MyTheme.darkBluishColor,
+                            )
+                            .bold
+                            .make(),
+                        catalog.desc.text
+                            .textStyle(context.theme.textTheme.labelSmall)
+                            .xl
+                            .color(
+                              isDarkMode
+                                  ? MyTheme.white.withOpacity(0.7)
+                                  : Colors.black54,
+                            )
+                            .make(),
+                        10.heightBox,
+                        "At gubergren amet at amet rebum, no erat elitr stet sanctus stet stet duo clita. Duo erat et lorem tempor amet. Ut lorem dolor labore magna gubergren, sed et sea tempor aliquyam sed. Gubergren eirmod amet kasd sanctus dolor magna aliquyam aliquyam. Et lorem et eirmod dolor amet, consetetur etc."
+                            .text
+                            .textStyle(context.theme.textTheme.labelSmall)
+                            .color(
+                              isDarkMode
+                                  ? MyTheme.white.withOpacity(0.7)
+                                  : Colors.black54,
+                            )
+                            .make()
+                            .p16(),
+                      ],
+                    ).py32(), // Reduced from py64 to py32
+                  ),
                 ),
               ),
             ),
