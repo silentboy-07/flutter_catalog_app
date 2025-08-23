@@ -1,16 +1,24 @@
-# flutter_catalog
+# 📱 DealMart – Flutter Shopping App  
 
-A new Flutter project.
+DealMart is a **Flutter-based shopping/catalog app** that showcases electronics items for purchase.  
+This project is part of my **70-Day Android & Flutter Learning Challenge**, where I documented **day-wise progress** on GitHub.  
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
+- 📂 **Catalog-based Shopping** – products are loaded from a `catalog.json` file  
+- 🛒 **Cart System** – add/remove items from cart  
+- 🎨 **Clean UI** – built with Flutter widgets & custom components  
+- 🔑 **Login Page** – basic authentication screen  
+- 📱 **Responsive Layout** – works on different devices/emulators  
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🛠️ Tech Stack
+- **Framework:** Flutter  
+- **Language:** Dart  
+- **Data Source:** JSON (`catalog.json`)  
+- **State Management:** VelocityX (VxStore)  
+- **IDE:** Android Studio / VS Code  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
