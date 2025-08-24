@@ -22,3 +22,40 @@ This project is part of my **70-Day Android & Flutter Learning Challenge**, wher
 - **IDE:** Android Studio / VS Code  
 
 
+---
+
+## 📸 Screenshots
+
+- **Home Page**  
+- **Catalog View**  
+- **Cart Page**  
+- **Login Page**
+
+---
+
+## ▶️ How to Run
+1. Clone this repo:
+   ```bash
+   git clone https://github.com/your-username/dealmart.git
+   cd dealmart
+
+2. Install dependencies:
+   ```bash
+   flutter pub get
+
+3. Run the app:
+   ```bash
+   flutter run
+   
+🏆 Learning Goals
+
+- **Practice Flutter UI & Layouts
+- **Learn JSON parsing & state management
+- **Build a realistic shopping app structure
+- **Improve project organization for portfolio
+
+
+   
+📜 License
+
+This project is licensed under the MIT License.
