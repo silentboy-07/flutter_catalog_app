@@ -1,7 +1,6 @@
 # 📱 DealMart – Flutter Shopping App  
 
 DealMart is a **Flutter-based shopping/catalog app** that showcases electronics items for purchase.  
-This project is part of my **70-Day Android & Flutter Learning Challenge**, where I documented **day-wise progress** on GitHub.  
 
 ---
 
