@@ -3,23 +3,18 @@ import 'package:flutter_catalog/models/catalog.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CartModel {
-  //catalog field
+  
   late CatalogModel _catalog;
-
-  //Collection of IDs - store IDs of each item
   final List<int> _itemIds = [];
 
-  //get catalog
-  // ignore: recursive_getters
   CatalogModel get catalog => _catalog;
 
   set catalog(CatalogModel newCatalog) {
-    // ignore: unnecessary_null_comparison
     assert(newCatalog != null);
     _catalog = newCatalog;
   }
 
-  //Get items in the cart
+  //Get items 
   List<Item?> get items =>
       _itemIds.map((id) => CatalogModel.getById(id)).toList();
 
