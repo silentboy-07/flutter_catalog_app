@@ -9,7 +9,7 @@ import 'package:flutter_catalog/utils/routes.dart';
 import 'package:flutter_catalog/widgets/home_widgets/catalog_header.dart';
 import 'package:flutter_catalog/widgets/home_widgets/catalog_list.dart';
 import 'package:velocity_x/velocity_x.dart';
-// import 'package:http/http.dart' as http;  //For API Call
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // final url = "https://api.jsonbin.io/b/604dbddb683e7e079c4eefd3";  // For API call
+ 
   @override
   void initState() {
     super.initState();
@@ -32,8 +32,7 @@ class _HomePageState extends State<HomePage> {
       "assets/files/catalog.json",
     );
 
-    // final response = await http.get(Uri.parse(url));           // For API call
-    // final catalogJson = response.body;
+  
 
     final decodeData = jsonDecode(catalogJson);
     var productsData = decodeData["products"];
@@ -48,8 +47,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: context.canvasColor,
       floatingActionButton: SizedBox(
-        height: 50, // adjust height
-        width: 55, // adjust weight
+        height: 50, 
+        width: 55, 
 
         child: VxBuilder<MyStore>(
           mutations: {AddMutation, RemoveMutation},
