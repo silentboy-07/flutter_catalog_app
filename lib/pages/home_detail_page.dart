@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/catalog.dart';
@@ -33,16 +33,16 @@ class HomeDetailPage extends StatelessWidget {
                 .make(),
             AddToCart(catalog: catalog, isDarkMode: isDarkMode).wh(100, 50),
           ],
-        ).p16(), // Reduced from p32 to p16
+        ).p16(), 
       ),
       body: SafeArea(
-        bottom: true, // Changed to true to respect bottom safe area
+        bottom: true, 
         child: Column(
           children: [
             Hero(
               tag: Key(catalog.id.toString()),
               child: Image.network(catalog.image),
-            ).h24(context), // Reduced from h32 to h24
+            ).h24(context), 
             Expanded(
               child: VxArc(
                 height: 30.0,
@@ -52,7 +52,7 @@ class HomeDetailPage extends StatelessWidget {
                   color: context.cardColor,
                   width: context.screenWidth,
                   child: SingleChildScrollView(
-                    // Added scrollable container
+                   
                     child: Column(
                       children: [
                         catalog.name.text.xl4
@@ -84,7 +84,7 @@ class HomeDetailPage extends StatelessWidget {
                             .make()
                             .p16(),
                       ],
-                    ).py32(), // Reduced from py64 to py32
+                    ).py32(), 
                   ),
                 ),
               ),
