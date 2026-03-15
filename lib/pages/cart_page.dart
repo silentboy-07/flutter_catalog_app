@@ -42,10 +42,10 @@ class _CartTotal extends StatelessWidget {
               return "\$${cart.totalPrice}".text.xl5
                   .textStyle(
                     context.theme.textTheme.bodyLarge,
-                  ) // Use bodyLarge text style
+                  ) 
                   .color(
                     context.theme.textTheme.bodyLarge!.color,
-                  ) // Use bodyLarge color for light/dark mode
+                  ) 
                   .make();
             },
           ),
