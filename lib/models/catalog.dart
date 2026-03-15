@@ -3,13 +3,11 @@ import 'dart:convert';
 class CatalogModel {
   static List<Item> items = [];
 
-  // get item by id (changed to static)
   static Item? getById(int id) => items.firstWhere(
     (element) => element.id == id,
     orElse: () => Item.empty(),
   );
 
-  // get item by position
   static Item getByPosition(int pos) => items[pos];
 }
 
@@ -30,7 +28,7 @@ class Item {
     required this.image,
   });
 
-  /// A default empty item (for safe returns in case not found)
+  
   factory Item.empty() {
     return Item(
       id: -1,
@@ -43,7 +41,7 @@ class Item {
   }
 
   Item copyWith({
-    int? id, // 🔥 fixed (was String?)
+    int? id, 
     String? name,
     String? desc,
     num? price,
@@ -75,7 +73,7 @@ class Item {
     return Item(
       id: map['id'] is int
           ? map['id']
-          : int.tryParse(map['id'].toString()) ?? 0, // 🔥 fixed
+          : int.tryParse(map['id'].toString()) ?? 0, 
       name: map['name'] ?? '',
       desc: map['desc'] ?? '',
       price: map['price'] ?? 0,
