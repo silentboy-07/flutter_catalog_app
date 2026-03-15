@@ -93,9 +93,9 @@ class MyTheme {
   );
 
   // Color palette
-  static Color creamColor = const Color(0xFFF5F5F5); // Soft background
-  static Color darkBluishColor = const Color(0xFF2C2C54); // Dark navy-purple
-  static Color white = const Color(0xFFFFFFFF); // White
+  static Color creamColor = const Color(0xFFF5F5F5); 
+  static Color darkBluishColor = const Color(0xFF2C2C54); 
+  static Color white = const Color(0xFFFFFFFF); 
   static Color darkCreamColor = Vx.gray900;
   static Color lightBluishColor = Vx.indigo500;
 }
